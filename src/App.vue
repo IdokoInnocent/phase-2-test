@@ -90,6 +90,7 @@ export default {
 
   data() {
     return {
+      // product details
       products: [
         {
           id: 1,
@@ -171,6 +172,7 @@ export default {
   },
 
   methods: {
+    // add items to cart when clicked
     addToCart(item) {
       this.cartItems.push(item);
       this.cartItemCount++;
@@ -182,6 +184,7 @@ export default {
     },
   },
 
+  // Computing the total cost of items in the cart
   computed: {
     addTotalCost() {
       const totalPrice = this.cartItems.map((el) => el.price);
