@@ -1,8 +1,10 @@
 ## shopping_cart Frontend Application phase 2
 
 A single page application that allow users to add item to cart and delete items from cart.
+
 It also store the number of items in the cart.
-This application was built with Vue.j and Scss/Sass
+
+This application was built with Vue.j and Scss/Sass.
 
 ## Project setup
 
