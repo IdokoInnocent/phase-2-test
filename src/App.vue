@@ -45,9 +45,15 @@
                 >
               </h1>
               <p class="product-price">₹{{ product.price }}</p>
-              <a href="#" class="btn" @click.prevent="addToCart(product)"
-                >ADD TO CART</a
+
+              <button
+                class="btn"
+                v-on:click="addToCart(product)"
+                :disabled="checkCart(product.id)"
+                :class="{ 'btn--out': checkCart(product.id) }"
               >
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
@@ -172,20 +178,25 @@ export default {
   },
 
   methods: {
+    checkCart(id) {
+      let check = this.cartItems;
+      return check.find((item) => {
+        return item.id === id;
+      });
+    },
+
     // add items to cart when clicked
-    addToCart(item) {
-      this.cartItems.push(item);
+    addToCart(product) {
+      this.cartItems.push(product);
       this.cartItemCount++;
     },
 
     // Removing items from cart
     removeItem(id) {
-      this.cartItems = this.cartItems.filter((cartItem)=>{
-        return cartItem.id !== id
-        
+      this.cartItems = this.cartItems.filter((cartItem) => {
+        return cartItem.id !== id;
       });
       this.cartItemCount--;
-      
     },
   },
 
@@ -427,19 +438,13 @@ export default {
   position: relative;
   left: 45rem;
   bottom: 4rem;
+  border: none;
+  outline: none;
 
   @media only screen and (max-width: 56.25em) {
     left: -3rem;
     bottom: -4rem;
     padding: 1rem;
-  }
-
-  &:hover {
-    background-color: #66c57a;
-  }
-
-  &:active {
-    background: #ddd;
   }
 
   &--out {
