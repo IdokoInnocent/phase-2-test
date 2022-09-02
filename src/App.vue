@@ -46,14 +46,14 @@
               </h1>
               <p class="product-price">₹{{ product.price }}</p>
 
-              <button
+              <a
                 class="btn"
                 v-on:click="addToCart(product)"
                 :disabled="checkCart(product.id)"
                 :class="{ 'btn--out': checkCart(product.id) }"
               >
                 Add to cart
-              </button>
+              </a>
             </div>
           </div>
         </div>
