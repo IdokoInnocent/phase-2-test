@@ -66,7 +66,7 @@
             <div>
               <p class="cart__product-price">
                 ₹{{ cartItem.price }}
-                <button class="cart__delete" @click="removeItem()">
+                <button class="cart__delete" @click="removeItem(cartItem.id)">
                   &times;
                 </button>
               </p>
@@ -178,9 +178,14 @@ export default {
       this.cartItemCount++;
     },
 
-    removeItem() {
-      this.cartItems.pop();
+    // Removing items from cart
+    removeItem(id) {
+      this.cartItems = this.cartItems.filter((cartItem)=>{
+        return cartItem.id !== id
+        
+      });
       this.cartItemCount--;
+      
     },
   },
 
