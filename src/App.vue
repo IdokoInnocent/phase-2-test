@@ -48,7 +48,7 @@
 
               <a
                 class="btn"
-                v-on:click="addToCart(product)"
+                @click="addToCart(product)"
                 :disabled="checkCart(product.id)"
                 :class="{ 'btn--out': checkCart(product.id) }"
               >
@@ -178,6 +178,7 @@ export default {
   },
 
   methods: {
+    // Check if Item already exist in the cart. If it has been added, do not addd.
     checkCart(id) {
       let check = this.cartItems;
       return check.find((item) => {
