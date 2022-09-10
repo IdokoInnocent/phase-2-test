@@ -46,14 +46,14 @@
               </h1>
               <p class="product-price">₹{{ product.price }}</p>
 
-              <a
+              <button
                 class="btn"
                 @click="addToCart(product)"
                 :disabled="checkCart(product.id)"
                 :class="{ 'btn--out': checkCart(product.id) }"
               >
                 Add to cart
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -180,10 +180,9 @@ export default {
   methods: {
     // Check if Item already exist in the cart. If it has been added, do not addd.
     checkCart(id) {
-      let check = this.cartItems;
-      return check.find((item) => {
-        return item.id === id;
-      });
+      const check = this.cartItems;
+      return check.find((item) => item.id === id);
+
     },
 
     // add items to cart when clicked
